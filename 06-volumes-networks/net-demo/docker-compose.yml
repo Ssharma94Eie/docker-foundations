@@ -1,0 +1,11 @@
+services:
+  web:
+    image: nginx:alpine
+
+  client:
+    image: alpine
+    # Reaches the web service by its name over the Compose network (a
+    # user-defined bridge), then stays up so you can exec into it.
+    command: sh -c "sleep 2; echo '--- fetching http://web by name ---'; wget -qO- http://web | grep -i '<title>'; sleep infinity"
+    depends_on:
+      - web

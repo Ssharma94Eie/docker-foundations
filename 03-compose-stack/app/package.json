@@ -1,0 +1,10 @@
+{
+  "name": "compose-demo-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal API that proves service-to-service connectivity to Postgres and Redis over a Compose network.",
+  "dependencies": {
+    "pg": "^8.13.1",
+    "redis": "^4.7.0"
+  }
+}
