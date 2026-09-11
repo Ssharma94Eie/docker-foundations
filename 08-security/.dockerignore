@@ -1,0 +1,5 @@
+node_modules
+.git
+api_token.txt
+Dockerfile*
+.dockerignore

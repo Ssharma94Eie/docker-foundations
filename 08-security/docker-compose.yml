@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    image: secure-demo
+    ports:
+      - "8080:3000"
+    read_only: true            # the container's root filesystem is read-only
+    tmpfs:
+      - /tmp                    # a small writable scratch space in memory
+    cap_drop:
+      - ALL                     # drop every Linux capability
+    security_opt:
+      - no-new-privileges:true  # process can never gain more privileges
+    secrets:
+      - api_token               # mounted at /run/secrets/api_token, not in env
+
+secrets:
+  api_token:
+    file: ./api_token.txt

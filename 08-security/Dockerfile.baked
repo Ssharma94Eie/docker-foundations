@@ -1,0 +1,9 @@
+# ANTI-PATTERN. Do NOT do this. Shown only to prove the leak.
+# A build arg copied into ENV is baked into the image and shows up in
+# `docker history`, so anyone who can pull the image can read the token.
+FROM node:22-alpine
+WORKDIR /app
+COPY server.js ./
+ARG API_TOKEN
+ENV API_TOKEN=$API_TOKEN
+CMD ["node", "server.js"]
