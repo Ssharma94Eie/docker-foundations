@@ -1,0 +1,17 @@
+# A Podman Quadlet unit (the modern replacement for `podman generate systemd`).
+# Install it rootless:
+#   mkdir -p ~/.config/containers/systemd
+#   cp nginx.container ~/.config/containers/systemd/
+#   systemctl --user daemon-reload
+#   systemctl --user start nginx.service   # service name comes from the file name
+#   systemctl --user is-active nginx.service
+# For it to survive logout, enable lingering once:  sudo loginctl enable-linger "$USER"
+[Unit]
+Description=Rootless nginx via a Podman Quadlet
+
+[Container]
+Image=docker.io/library/nginx:alpine
+PublishPort=8083:80
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+# Same Compose file runs under both engines:
+#   Docker:  docker compose up -d
+#   Podman:  podman-compose up -d
+# Image names are fully qualified (docker.io/...) so Podman resolves them the same everywhere.
+services:
+  web:
+    image: docker.io/library/nginx:alpine
+    ports:
+      - "8080:80"   # rootless-safe port (>= 1024); rootless Podman cannot bind 80 by default
