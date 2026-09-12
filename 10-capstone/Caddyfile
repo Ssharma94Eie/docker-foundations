@@ -1,0 +1,12 @@
+# Caddy config. SITE_ADDRESS comes from .env.
+#
+# On a real VPS with a PUBLIC IP, set SITE_ADDRESS to <public-ip>.sslip.io and
+# DELETE the `tls internal` line: Caddy then fetches a trusted Let's Encrypt
+# certificate automatically, no domain purchase required.
+#
+# On a private/lab box (no public IP, so Let's Encrypt cannot validate) keep
+# `tls internal` and Caddy serves HTTPS with its own local CA.
+{$SITE_ADDRESS} {
+	tls internal
+	reverse_proxy app:3000
+}

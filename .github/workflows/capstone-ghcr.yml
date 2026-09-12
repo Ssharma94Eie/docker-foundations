@@ -1,0 +1,38 @@
+name: capstone-ghcr
+
+# Build the capstone image in CI and push it to GitHub Container Registry (GHCR).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "10-capstone/**"
+      - ".github/workflows/capstone-ghcr.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./10-capstone
+          push: true
+          tags: |
+            ghcr.io/ssharma94eie/tdm-capstone:latest
+            ghcr.io/ssharma94eie/tdm-capstone:${{ github.sha }}

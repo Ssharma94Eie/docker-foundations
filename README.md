@@ -12,6 +12,7 @@ Companion code for the **Docker Foundations** series on [TechDevMantra](https://
 | [`07-operating/`](07-operating) | [Operating Containers: Healthchecks, Resource Limits, Restart Policies, and Env Config](https://www.techdevmantra.com/guides/operating-docker-containers) |
 | [`08-security/`](08-security) | [Docker Security Basics: Non-Root, Read-Only, Image Scanning, and Secrets](https://www.techdevmantra.com/guides/docker-security-basics) |
 | [`09-docker-vs-podman/`](09-docker-vs-podman) | [Docker vs Podman: A Hands-On Comparison and Migration](https://www.techdevmantra.com/guides/docker-vs-podman) |
+| [`10-capstone/`](10-capstone) | [Capstone: Dockerize Your Own App End to End](https://www.techdevmantra.com/guides/dockerize-app-end-to-end) |
 
 Posts 1 and 2 are command-only, so their folders are quick command references rather than runnable projects. Post 5 (Images and Registries) is on the way.
 
